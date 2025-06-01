@@ -1,0 +1,152 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Assets/LogoMastermini.png">
+    <title>IndoDorm - MusicMuse</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="flex-min">
+    <header class="header">
+        <div class="header__container">
+            <button id="toggleSidebar" class="header__menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="header__logo">
+                <img src="Assets/LogoMaster.png" alt="IndoDorm Logo" class="logo-img">
+                <span class="logo-text">IndoDorm</span>
+            </div>
+            <div class="header__actions">
+                <input type="text" class="header__search" placeholder="Search..." aria-label="Search">
+                <a href="#" class="header__profile">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <aside id="sidebar" class="sidebar">
+            <h2 class="sidebar__title">Categories</h2>
+            <ul class="sidebar__list">
+                <li><a href="index.html" class="sidebar__link"><img src="Assets/Icons/home.png" class="sidebar__streamer-img" alt="Home"> Home</a></li>
+                <li><a href="games.html" class="sidebar__link"><img src="Assets/Icons/game.png" class="sidebar__streamer-img" alt="Games"> Games</a></li>
+                <li><a href="creative.html" class="sidebar__link "><img src="Assets/Icons/creative.png" class="sidebar__streamer-img" alt="Creative"> Creative</a></li>
+                <li><a href="justchatting.html" class="sidebar__link"><img src="Assets/Icons/chatting.png" class="sidebar__streamer-img" alt="Just Chatting"> Just Chatting</a></li>
+            </ul>
+            <h3 class="sidebar__subtitle">Recommended Streamers</h3>
+            <ul class="sidebar__list">
+                <li><a href="artvibe.html" class="sidebar__link"><img src="Assets/Peers/artvibe.png" class="sidebar__streamer-img" alt="ArtVibe"> ArtVibe</a></li>
+                <li><a href="musicmuse.html" class="sidebar__link sidebar__link--active"><img src="Assets/Peers/musicmuse.png" class="sidebar__streamer-img" alt="MusicMuse"> MusicMuse</a></li>
+            </ul>
+        </aside>
+        <main class="main">
+            <div class="streamer-profile">
+                <h2 class="main__title">MusicMuse</h2>
+                <p>Live music performances and songwriting sessions. Feel the rhythm! | 38K followers</p>
+            </div>
+            <div class="video-player">
+                <div class="video-placeholder"></div>
+                <div class="live-badge">LIVE</div>
+            </div>
+            <div class="stream-info">
+                <h2>MusicMuse's Acoustic Guitar Session</h2>
+                <p>Category: Music | 6.5K viewers</p>
+            </div>
+            <div id="music-list">
+                <h2 class="main__title">Music Showcase</h2>
+                <ul id="tracks"></ul>
+            </div>
+            <h2 class="main__title">Related Streams</h2>
+            <div class="stream-grid">
+                <div class="content-card">
+                    <div class="content-card__thumbnail" style="background-image: url('https://via.placeholder.com/480x270?text=Live+Piano');">
+                        <div class="live-badge">LIVE</div>
+                    </div>
+                    <div class="content-card__info">
+                        <h3 class="content-card__title">Live Piano Performance</h3>
+                        <p class="content-card__stats">PianoMaestro | 2.8K viewers</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-card__thumbnail" style="background-image: url('https://via.placeholder.com/480x270?text=Electronic+Music');">
+                        <div class="live-badge">LIVE</div>
+                    </div>
+                    <div class="content-card__info">
+                        <h3 class="content-card__title">Electronic Music Production</h3>
+                        <p class="content-card__stats">DJBeat | 2.1K viewers</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-card__thumbnail" style="background-image: url('https://via.placeholder.com/480x270?text=Songwriting');">
+                        <div class="live-badge">LIVE</div>
+                    </div>
+                    <div class="content-card__info">
+                        <h3 class="content-card__title">Songwriting Session</h3>
+                        <p class="content-card__stats">LyricLad | 1.7K viewers</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-card__thumbnail" style="background-image: url('https://via.placeholder.com/480x270?text=Drum+Covers');">
+                        <div class="live-badge">LIVE</div>
+                    </div>
+                    <div class="content-card__info">
+                        <h3 class="content-card__title">Drum Covers</h3>
+                        <p class="content-card__stats">RhythmKing | 1.9K viewers</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <aside class="chat-section">
+            <h2 class="sidebar__title">Live Chat</h2>
+            <div id="chatMessages" class="chat-messages">
+                <div class="chat-message">Fan1: Love the melody, MusicMuse! 🎶</div>
+                <div class="chat-message">Fan2: Can you play some jazz?</div>
+            </div>
+            <div class="chat-input-container">
+                <input id="chatInput" type="text" class="chat-input" placeholder="Send a message..." aria-label="Chat input">
+                <button id="sendChat" class="chat-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </aside>
+    </div>
+<script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Assets/LogoMastermini.png">
+    <title>IndoDorm - Just Chatting</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="flex-min">
+    <header class="header">
+        <div class="header__container">
+            <button id="toggleSidebar" class="header__menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="header__logo">
+                <img src="Assets/LogoMaster.png" alt="IndoDorm Logo" class="logo-img">
+                <span class="logo-text">IndoDorm</span>
+            </div>
+            <div class="header__actions">
+                <input type="text" class="header__search" placeholder="Search just chatting..." aria-label="Search just chatting">
+                <a href="#" class="header__profile">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+       <aside id="sidebar" class="sidebar">
+            <h2 class="sidebar__title">Categories</h2>
+            <ul class="sidebar__list">
+                <li><a href="index.html" class="sidebar__link"><img src="Assets/Icons/home.png" class="sidebar__streamer-img" alt="Home"> Home</a></li>
+                <li><a href="games.html" class="sidebar__link"><img src="Assets/Icons/game.png" class="sidebar__streamer-img" alt="Games"> Games</a></li>
+                <li><a href="creative.html" class="sidebar__link "><img src="Assets/Icons/creative.png" class="sidebar__streamer-img" alt="Creative"> Creative</a></li>
+                <li><a href="justchatting.html" class="sidebar__link sidebar__link--active"><img src="Assets/Icons/chatting.png" class="sidebar__streamer-img" alt="Just Chatting"> Just Chatting</a></li>
+            </ul>
+            <h3 class="sidebar__subtitle">Recommended Streamers</h3>
+            <ul class="sidebar__list">
+                <li><a href="artvibe.html" class="sidebar__link"><img src="Assets/Peers/artvibe.png" class="sidebar__streamer-img" alt="ArtVibe"> ArtVibe</a></li>
+                <li><a href="musicmuse.html" class="sidebar__link"><img src="Assets/Peers/musicmuse.png" class="sidebar__streamer-img" alt="MusicMuse"> MusicMuse</a></li>
+            </ul>
+        </aside>
+        <main class="main">
+            <div class="filter">
+                <button class="filter__btn filter__btn--active" data-category="all">All Chatting</button>
+                <button class="filter__btn" data-category="gaming-talk">Gaming Talk</button>
+                <button class="filter__btn" data-category="life-stories">Life Stories</button>
+                <button class="filter__btn" data-category="qna">Q&A</button>
+            </div>
+            <h2 class="main__title">Just Chatting Streams</h2>
+            <div id="chattingGrid" class="chatting-grid">
+                <div class="content-card" data-categories="gaming-talk">
+                    <div class="content-card__thumbnail" style="background-image: url('https://via.placeholder.com/480x270?text=Gaming+Talk');">
+                        <div class="live-badge">LIVE</div>
+                    </div>
+                    <div class="content-card__info">
+                        <h3 class="content-card__title">Gaming News Discussion</h3>
+                        <p class="content-card__stats">GameGuru | 6.2K viewers | Gaming Talk</p>
+                    </div>
+                </div>
+                <div class="content-card" data-categories="life-stories">
+                    <div class="content-card__thumbnail" style="background-image: url('https://via.placeholder.com/480x270?text=Life+Stories');">
+                        <div class="live-badge">LIVE</div>
+                    </div>
+                    <div class="content-card__info">
+                        <h3 class="content-card__title">Story Time</h3>
+                        <p class="content-card__stats">LifeTales | 4.1K viewers | Life Stories</p>
+                    </div>
+                </div>
+                <div class="content-card" data-categories="qna">
+                    <div class="content-card__thumbnail" style="background-image: url('https://via.placeholder.com/480x270?text=Q&A');">
+                        <div class="live-badge">LIVE</div>
+                    </div>
+                    <div class="content-card__info">
+                        <h3 class="content-card__title">Ask Me Anything</h3>
+                        <p class="content-card__stats">ChatMaster | 3.3K viewers | Q&A</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="justchatting.js"></script>
+</body>
+</html>

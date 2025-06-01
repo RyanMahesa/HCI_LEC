@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Assets/LogoMastermini.png">
+    <title>IndoDorm - Live Streaming Platform</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="flex-min">
+    <header class="header">
+        <div class="header__container">
+            <button id="toggleSidebar" class="header__menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="header__logo">
+                <img src="Assets/LogoMaster.png" alt="IndoDorm Logo" class="logo-img">
+                <span class="logo-text">IndoDorm</span>
+            </div>
+            <div class="header__actions">
+                <input type="text" class="header__search" placeholder="Search..." aria-label="Search">
+                <a href="#" class="header__profile">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <aside id="sidebar" class="sidebar">
+            <h2 class="sidebar__title">Categories</h2>
+            <ul class="sidebar__list">
+                <li><a href="index.html" class="sidebar__link sidebar__link--active"><img src="Assets/Icons/home.png" class="sidebar__streamer-img" alt="Home"> Home</a></li>
+                <li><a href="games.html" class="sidebar__link"><img src="Assets/Icons/game.png" class="sidebar__streamer-img" alt="Games"> Games</a></li>
+                <li><a href="creative.html" class="sidebar__link "><img src="Assets/Icons/creative.png" class="sidebar__streamer-img" alt="Creative"> Creative</a></li>
+                <li><a href="justchatting.html" class="sidebar__link"><img src="Assets/Icons/chatting.png" class="sidebar__streamer-img" alt="Just Chatting"> Just Chatting</a></li>
+            </ul>
+            <h3 class="sidebar__subtitle">Recommended Streamers</h3>
+            <ul class="sidebar__list">
+                <li><a href="artvibe.html" class="sidebar__link"><img src="Assets/Peers/artvibe.png" class="sidebar__streamer-img" alt="ArtVibe"> ArtVibe</a></li>
+                <li><a href="musicmuse.html" class="sidebar__link"><img src="Assets/Peers/musicmuse.png" class="sidebar__streamer-img" alt="MusicMuse"> MusicMuse</a></li>
+            </ul>
+        </aside>
+        <main class="main">
+            <div class="video-player">
+                <div class="video-placeholder"></div>
+                <div class="live-badge">LIVE</div>
+            </div>
+            <div class="stream-info">
+                <h2>Epic Gaming Stream by Streamer123</h2>
+                <p>Playing: Valorant | 12.3K viewers</p>
+            </div>
+            <h2 class="main__title">Live Channels</h2>
+            <div class="stream-grid">
+                <div class="content-card">
+                    <div class="content-card__thumbnail" style="background-image: url('https://via.placeholder.com/480x270?text=Creative+Coding');">
+                        <div class="live-badge">LIVE</div>
+                    </div>
+                    <div class="content-card__info">
+                        <h3 class="content-card__title">Creative Coding</h3>
+                        <p class="content-card__stats">CodingNinja | 5.2K viewers</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-card__thumbnail" style="background-image: url('https://via.placeholder.com/480x270?text=Just+Chatting');">
+                        <div class="live-badge">LIVE</div>
+                    </div>
+                    <div class="content-card__info">
+                        <h3 class="content-card__title">Just Chatting</h3>
+                        <p class="content-card__stats">ChatterBox | 8.1K viewers</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-card__thumbnail" style="background-image: url('https://via.placeholder.com/480x270?text=Minecraft+Madness');">
+                        <div class="live-badge">LIVE</div>
+                    </div>
+                    <div class="content-card__info">
+                        <h3 class="content-card__title">Minecraft Madness</h3>
+                        <p class="content-card__stats">BlockMaster | 3.4K viewers</p>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-card__thumbnail" style="background-image: url('https://via.placeholder.com/480x270?text=Art+Stream');">
+                        <div class="live-badge">LIVE</div>
+                    </div>
+                    <div class="content-card__info">
+                        <h3 class="content-card__title">Art Stream</h3>
+                        <p class="content-card__stats">ArtisticSoul | 2.7K viewers</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <aside class="chat-section">
+            <h2 class="sidebar__title">Live Chat</h2>
+            <div id="chatMessages" class="chat-messages">
+                <div class="chat-message">User1: Great stream! Keep it up! 😎</div>
+                <div class="chat-message">User2: What's the next game?</div>
+            </div>
+            <div class="chat-input-container">
+                <input id="chatInput" type="text" class="chat-input" placeholder="Send a message..." aria-label="Chat input">
+                <button id="sendChat" class="chat-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </aside>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
